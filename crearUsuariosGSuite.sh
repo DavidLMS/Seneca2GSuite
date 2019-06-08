@@ -1,6 +1,6 @@
 #!/bin/bash
 #En esta variable ponemos nuestro dominio educativo (incluyendo la @)
-DOMINIO="@lasallemundonuevo.es"
+DOMINIO="@midominio.com"
 #Unimos los .csv de los distintos cursos que haya en la carpeta (regAlum de Séneca)
 cat *.csv > ficheros-unidos.csv
 #Insertamos \n porque de lo contrario no lee el último alumno
