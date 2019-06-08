@@ -8,4 +8,4 @@ Solamente debes editarlo y cambiar **@midominio.com** por el dominio educativo d
 
 El script creará una cuenta para todos los usuarios (excepto los que ya tengan cuenta) que se encuentren en uno o varios .csv dentro de la misma carpeta del script (los .csv exportados directamente de la plataforma Séneca de la Junta de Andalucía).
 
-En la ejecución se asume que el script y los csv están en la misma carpeta que GAM, pero puedes simplemente cambiar **./gam** por la ubicación del ejecutable.
+En la ejecución se asume que el script y los .csv están en la misma carpeta que GAM, pero puedes simplemente cambiar **./gam** por la ubicación del ejecutable.
