@@ -1,5 +1,5 @@
 # Seneca2GSuite
-Script realizado en Bash para facilitar la creación de cuentas educativas en G-Suite for Education usando la información de la plataforma Séneca (Andalucía).
+Script realizado en Bash para facilitar la creación de cuentas educativas en G-Suite for Education usando la información de la plataforma Séneca (Andalucía). Concretamente, crea las cuentas que no existan con la contraseña dada siguiendo el formato: nombreapellidos@dominio.com.
 
 ## Instalación y uso
 Este script requiere la instalación previa de GAM (https://github.com/jay0lee/GAM).
