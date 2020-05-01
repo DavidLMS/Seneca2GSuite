@@ -26,8 +26,17 @@ iconv -f "ISO8859-1" -t "UTF-8" ficheros-unidos.csv > ficheros-unidos-utf8.csv
 		echo "nombre: ${nombre/\"/}"
 		echo "apellidos: ${apellidos/\"/}"
 		#El email estará formado por el nombre y dos apellidos seguidos
-		email=$(echo "${nombre/\"/}${apellidos/\"/}"$DOMINIO | tr '[:upper:]' '[:lower:]' | tr -d '[[:space:]]' | tr "áéíóúñü" "aeiounu")
+		email=$(echo "${nombre/\"/}${apellidos/\"/}"$DOMINIO | tr '[:upper:]' '[:lower:]' | tr -d '[[:space:]]')
+		#Eliminamos acentos y otros caracteres no compatibles con el email
+		email=$(echo ${email//á/a})
+		email=$(echo ${email//é/e})
+		email=$(echo ${email//í/i})
+		email=$(echo ${email//ó/o})
+		email=$(echo ${email//ú/u})
+		email=$(echo ${email//ü/u})
+		email=$(echo ${email//ñ/n})
 		echo "email: $email"
+		#Creamos el usuario
 		#En la siguiente línea puedes añadir org NombreUnidadOrganizativa para añadir los usuarios a una unidad organizativa concreta
 		./gam create user $email firstname "${nombre/\"/}" lastname "${apellidos/\"/}" password $password changepassword $force
 	done
