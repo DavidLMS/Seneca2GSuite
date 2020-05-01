@@ -35,6 +35,13 @@ iconv -f "ISO8859-1" -t "UTF-8" ficheros-unidos.csv > ficheros-unidos-utf8.csv
 		email=$(echo ${email//ú/u})
 		email=$(echo ${email//ü/u})
 		email=$(echo ${email//ñ/n})
+		email=$(echo ${email//Á/a})
+		email=$(echo ${email//É/e})
+		email=$(echo ${email//Í/i})
+		email=$(echo ${email//Ó/o})
+		email=$(echo ${email//Ú/u})
+		email=$(echo ${email//Ü/u})
+		email=$(echo ${email//Ñ/n})
 		echo "email: $email"
 		#Creamos el usuario
 		#En la siguiente línea puedes añadir org NombreUnidadOrganizativa para añadir los usuarios a una unidad organizativa concreta
