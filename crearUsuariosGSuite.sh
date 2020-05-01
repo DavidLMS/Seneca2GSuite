@@ -9,8 +9,13 @@ echo '\n' >> ficheros-unidos.csv
 echo 'Introduzca la contraseña que desea asignar a las cuentas:'
 read password
 #Escribimos si deseamos o no forzar un cambio de contraseña al primer inicio de sesión
-echo 'Escribe "on" si desea forzar un cambio de contraseña al iniciar sesión o escribe "off" si no lo desea'
-read force
+echo "¿Quieres forzar el cambio de contraseña cuando inicien sesión? (Escribe 1 o 2)"
+select yn in "Sí" "No"; do
+    case $yn in
+        Sí ) force=on; break;;
+        No ) force=off; break;;
+    esac
+done
 #Convertimos el fichero al formato UTF-8
 iconv -f "ISO8859-1" -t "UTF-8" ficheros-unidos.csv > ficheros-unidos-utf8.csv
 IFS=,
@@ -21,6 +26,7 @@ do
 	#El email estará formado por el nombre y dos apellidos seguidos
 	email=$(echo "${nombre/\"/}${apellidos/\"/}"$DOMINIO | tr '[:upper:]' '[:lower:]' | tr -d '[[:space:]]' | tr "áéíóúñü" "aeiounu")
 	echo "email: $email"
+	#En la siguiente línea puedes añadir org NombreUnidadOrganizativa para añadir los usuarios a una unidad organizativa concreta
 	./gam create user $email firstname "${nombre/\"/}" lastname "${apellidos/\"/}" password $password changepassword $force
 done < ficheros-unidos-utf8.csv
 #Eliminamos los ficheros auxiliares utilizados
