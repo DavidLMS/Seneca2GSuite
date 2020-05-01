@@ -12,7 +12,7 @@ read password
 echo 'Escribe "on" si desea forzar un cambio de contraseña al iniciar sesión o escribe "off" si no lo desea'
 read force
 #Convertimos el fichero al formato UTF-8
-iconv -f "windows-1252" -t "UTF-8" ficheros-unidos.csv > ficheros-unidos-utf8.csv
+iconv -f "ISO8859-1" -t "UTF-8" ficheros-unidos.csv > ficheros-unidos-utf8.csv
 IFS=,
 while read apellidos nombre resto;
 do
