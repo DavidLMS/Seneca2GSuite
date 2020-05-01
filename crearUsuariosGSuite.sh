@@ -18,17 +18,20 @@ select yn in "Sí" "No"; do
 done
 #Convertimos el fichero al formato UTF-8
 iconv -f "ISO8859-1" -t "UTF-8" ficheros-unidos.csv > ficheros-unidos-utf8.csv
-IFS=,
-while read apellidos nombre resto;
-do
-	echo "nombre: ${nombre/\"/}"
-	echo "apellidos: ${apellidos/\"/}"
-	#El email estará formado por el nombre y dos apellidos seguidos
-	email=$(echo "${nombre/\"/}${apellidos/\"/}"$DOMINIO | tr '[:upper:]' '[:lower:]' | tr -d '[[:space:]]' | tr "áéíóúñü" "aeiounu")
-	echo "email: $email"
-	#En la siguiente línea puedes añadir org NombreUnidadOrganizativa para añadir los usuarios a una unidad organizativa concreta
-	./gam create user $email firstname "${nombre/\"/}" lastname "${apellidos/\"/}" password $password changepassword $force
-done < ficheros-unidos-utf8.csv
+#Leemos cada línea saltándonos la primera (por ser la cabecera) y creando el usuario
+{
+	read
+	while IFS=, read apellidos nombre resto;
+	do
+		echo "nombre: ${nombre/\"/}"
+		echo "apellidos: ${apellidos/\"/}"
+		#El email estará formado por el nombre y dos apellidos seguidos
+		email=$(echo "${nombre/\"/}${apellidos/\"/}"$DOMINIO | tr '[:upper:]' '[:lower:]' | tr -d '[[:space:]]' | tr "áéíóúñü" "aeiounu")
+		echo "email: $email"
+		#En la siguiente línea puedes añadir org NombreUnidadOrganizativa para añadir los usuarios a una unidad organizativa concreta
+		./gam create user $email firstname "${nombre/\"/}" lastname "${apellidos/\"/}" password $password changepassword $force
+	done
+} < ficheros-unidos-utf8.csv
 #Eliminamos los ficheros auxiliares utilizados
 rm ficheros-unidos.csv
 rm ficheros-unidos-utf8.csv
