@@ -10,7 +10,7 @@ El script creará una cuenta para todos los usuarios (excepto los que ya tengan 
 
 En la ejecución se asume que el script y los .csv están en la misma carpeta que GAM, pero puedes simplemente cambiar **./gam** por la ubicación del ejecutable.
 
-Si quieres añadir los usuarios a una Unidad Organizativa concreta, en la línea siguiente al comentario "#En la siguiente línea puedes añadir...", añade un espacio, la palabra org y el nombre de la Unidad Organizativa entre comillas. Por ejemplo, si quisieras añadir los usuarios a la Unidad Organizativa "Alumnado ESO", puedes poner:
+Por defecto, los usuarios se añaden a la Unidad Organizativa superior, que tiene el mismo nombre que el dominio. Si quieres añadir los usuarios a una Unidad Organizativa concreta, en la línea siguiente al comentario "#En la siguiente línea puedes añadir...", añade un espacio, la palabra org y el nombre de la Unidad Organizativa entre comillas. Por ejemplo, si quisieras añadir los usuarios a la Unidad Organizativa "Alumnado ESO", puedes poner:
 ~~~
  org "Alumnado ESO"
 ~~~
